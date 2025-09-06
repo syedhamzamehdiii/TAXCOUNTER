@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pakistan Tax Calculator - FBR Based</title>
+    <link rel="icon" type="image/png" href="logo.png">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/emailjs-com/3.2.0/email.min.js"></script>
     <script>
         (function(){
@@ -1125,11 +1126,11 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="salary-amount">Your Monthly Salary</label>
-                            <input type="number" id="salary-amount" placeholder="Enter your monthly salary">
+                            <input type="number" id="salary-amount" placeholder="Enter your monthly salary" oninput="calculateSalaryTax()">
                         </div>
                         <div class="form-group">
                             <label for="salary-year">Tax Year</label>
-                            <select id="salary-year">
+                            <select id="salary-year" onchange="calculateSalaryTax()">
                                 <option value="2025-26">2025 - 2026</option>
                                 <option value="2024-25">2024 - 2025</option>
                                 <option value="2023-24">2023 - 2024</option>
@@ -1145,7 +1146,6 @@
                         </div>
                     </div>
                     
-                    <button class="calculate-btn" onclick="calculateSalaryTax()">Calculate Tax</button>
                     
                     <div class="results" id="salary-results">
                         <div class="results-grid">
@@ -1176,11 +1176,11 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="freelancer-income">Annual Income (PKR)</label>
-                            <input type="number" id="freelancer-income" placeholder="Enter your annual income">
+                            <input type="number" id="freelancer-income" placeholder="Enter your annual income" oninput="calculateFreelancerTax()">
                         </div>
                         <div class="form-group">
                             <label for="freelancer-type">Freelancer Type</label>
-                            <select id="freelancer-type">
+                            <select id="freelancer-type" onchange="calculateFreelancerTax()">
                                 <option value="export-pseb">Export Services (PSEB Registered)</option>
                                 <option value="export-non-pseb">Export Services (Not PSEB Registered)</option>
                                 <option value="local">Local Services</option>
@@ -1188,7 +1188,6 @@
                         </div>
                     </div>
                     
-                    <button class="calculate-btn" onclick="calculateFreelancerTax()">Calculate Tax</button>
                     
                     <div class="results" id="freelancer-results">
                         <table class="result-table">
@@ -1206,11 +1205,11 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="business-income">Annual Taxable Income (PKR)</label>
-                            <input type="number" id="business-income" placeholder="Enter annual taxable income">
+                            <input type="number" id="business-income" placeholder="Enter annual taxable income" oninput="calculateBusinessTax()">
                         </div>
                         <div class="form-group">
                             <label for="business-type">Business Type</label>
-                            <select id="business-type">
+                            <select id="business-type" onchange="calculateBusinessTax()">
                                 <option value="banking">Banking Company</option>
                                 <option value="public">Public Company (Non-Banking)</option>
                                 <option value="private">Private Company</option>
@@ -1221,7 +1220,6 @@
                         </div>
                     </div>
                     
-                    <button class="calculate-btn" onclick="calculateBusinessTax()">Calculate Tax</button>
                     
                     <div class="results" id="business-results">
                         <table class="result-table">
@@ -1239,18 +1237,17 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="super-income">Annual Income (PKR Million)</label>
-                            <input type="number" id="super-income" placeholder="Enter annual income in millions">
+                            <input type="number" id="super-income" placeholder="Enter annual income in millions" oninput="calculateSuperTax()">
                         </div>
                         <div class="form-group">
                             <label for="super-year">Tax Year</label>
-                            <select id="super-year">
+                            <select id="super-year" onchange="calculateSuperTax()">
                                 <option value="2025-26">2025 - 2026</option>
                                 <option value="2024-25">2024 - 2025</option>
                             </select>
                         </div>
                     </div>
                     
-                    <button class="calculate-btn" onclick="calculateSuperTax()">Calculate Tax</button>
                     
                     <div class="results" id="super-results">
                         <table class="result-table">
@@ -1268,11 +1265,11 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="agri-income">Annual Agricultural Income (PKR)</label>
-                            <input type="number" id="agri-income" placeholder="Enter annual agricultural income">
+                            <input type="number" id="agri-income" placeholder="Enter annual agricultural income" oninput="calculateAgriculturalTax()">
                         </div>
                         <div class="form-group">
                             <label for="agri-province">Province</label>
-                            <select id="agri-province">
+                            <select id="agri-province" onchange="calculateAgriculturalTax()">
                                 <option value="punjab">Punjab</option>
                                 <option value="sindh">Sindh</option>
                                 <option value="kpk">Khyber Pakhtunkhwa</option>
@@ -1280,8 +1277,6 @@
                             </select>
                         </div>
                     </div>
-                    
-                    <button class="calculate-btn" onclick="calculateAgriculturalTax()">Calculate Tax</button>
                     
                     <div class="results" id="agricultural-results">
                         <table class="result-table">
@@ -1299,11 +1294,11 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="property-value">Property Value (PKR)</label>
-                            <input type="number" id="property-value" placeholder="Enter property value">
+                            <input type="number" id="property-value" placeholder="Enter property value" oninput="calculatePropertyTax()">
                         </div>
                         <div class="form-group">
                             <label for="property-transaction">Transaction Type</label>
-                            <select id="property-transaction">
+                            <select id="property-transaction" onchange="calculatePropertyTax()">
                                 <option value="selling">Selling Property (236C)</option>
                                 <option value="buying">Buying Property (236K)</option>
                                 <option value="rent">Rent Income (155)</option>
@@ -1320,7 +1315,6 @@
                         </select>
                     </div>
                     
-                    <button class="calculate-btn" onclick="calculatePropertyTax()">Calculate Tax</button>
                     
                     <div class="results" id="property-results">
                         <table class="result-table">
@@ -1331,9 +1325,6 @@
                     </div>
                 </div>
 
-                <!-- <div class="rating">
-                    <h3>Google Rating 5.0 ★★★★★ Based On 1000+ Reviews</h3>
-                </div> -->
             </div>
 
             <!-- Services Section -->
@@ -2494,23 +2485,41 @@
             const selectedCalcSection = document.getElementById(calcType + '-calc');
             if (selectedCalcSection) {
                 selectedCalcSection.classList.remove('hidden');
+
+                // Scroll to calculator section
+                setTimeout(() => {
+                    selectedCalcSection.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start' 
+                    });
+                }, 100);
             }
         }
 
         // Switch calculator types
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.calc-type').forEach(type => {
-                type.addEventListener('click', function() {
-                    const calcType = this.dataset.type;
-                    
-                    document.querySelectorAll('.calc-type').forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    document.querySelectorAll('.calculator-section').forEach(calc => calc.classList.add('hidden'));
-                    document.getElementById(calcType + '-calc').classList.remove('hidden');
+        // Switch calculator types with auto-scroll
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.calc-type').forEach(type => {
+        type.addEventListener('click', function() {
+            const calcType = this.dataset.type;
+            
+            document.querySelectorAll('.calc-type').forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            
+            document.querySelectorAll('.calculator-section').forEach(calc => calc.classList.add('hidden'));
+            const targetCalc = document.getElementById(calcType + '-calc');
+            targetCalc.classList.remove('hidden');
+            
+            // Auto-scroll to calculator section
+            setTimeout(() => {
+                targetCalc.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
                 });
-            });
+            }, 100);
         });
+    });
+});
 
         // FAQ Toggle
         function toggleFaq(element) {
@@ -2551,10 +2560,10 @@
             const monthlySalary = parseFloat(document.getElementById('salary-amount').value);
             const year = document.getElementById('salary-year').value;
             
-            if (!monthlySalary || monthlySalary <= 0) {
-                alert('Please enter a valid salary amount');
-                return;
-            }
+        if (!monthlySalary || monthlySalary <= 0) {
+            document.getElementById('salary-results').style.display = 'none';
+            return;
+            }   
             
             const annualSalary = monthlySalary * 12;
             const slabs = salaryTaxSlabs[year];
@@ -2593,10 +2602,9 @@
             const type = document.getElementById('freelancer-type').value;
             
             if (!income || income <= 0) {
-                alert('Please enter a valid income amount');
-                return;
-            }
-            
+    document.getElementById('freelancer-results').style.display = 'none';
+    return;
+}            
             let tax = 0;
             
             if (type === 'export-pseb') {
@@ -2636,10 +2644,10 @@
             const income = parseFloat(document.getElementById('business-income').value);
             const type = document.getElementById('business-type').value;
             
-            if (!income || income <= 0) {
-                alert('Please enter a valid income amount');
-                return;
-            }
+           if (!income || income <= 0) {
+    document.getElementById('business-results').style.display = 'none';
+    return;
+}
             
             let taxRate = 0;
             
@@ -2677,9 +2685,9 @@
             const year = document.getElementById('super-year').value;
             
             if (!incomeInMillions || incomeInMillions <= 0) {
-                alert('Please enter a valid income amount');
-                return;
-            }
+    document.getElementById('super-results').style.display = 'none';
+    return;
+}
             
             const slabs = superTaxSlabs[year];
             let tax = 0;
@@ -2709,9 +2717,9 @@
             const province = document.getElementById('agri-province').value;
             
             if (!income || income <= 0) {
-                alert('Please enter a valid income amount');
-                return;
-            }
+    document.getElementById('agricultural-results').style.display = 'none';
+    return;
+}
             
             let tax = 0;
             let slabs = [];
@@ -2761,10 +2769,9 @@
             const filerStatus = document.getElementById('filer-status').value;
             
             if (!value || value <= 0) {
-                alert('Please enter a valid property value');
-                return;
-            }
-            
+    document.getElementById('property-results').style.display = 'none';
+    return;
+}
             let taxRate = 0;
             
             if (transactionType === 'selling') {
