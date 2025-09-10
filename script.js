@@ -502,19 +502,10 @@ const salaryTaxSlabs = {
     ]
 };
 
-/* 
-AOP Tax Slabs Comments for Verification:
-2024-25: 0%, 15%, 20%, 30%, 40%, 45% (Non-salary individual rates)
-2023-24: 0%, 2.5%, 12.5%, 22.5%, 27.5%, 35% (Progressive structure)
-2022-23: 0%, 2.5%, 12.5%, 20%, 25%, 32.5%, 35% (7 slabs)
-2021-22: 0%, 5%, 10%, 15%, 17.5%, 20%, 22.5%, 25% (8 slabs)
-2020-21: 0%, 5%, 10%, 15%, 17.5%, 20%, 22.5%, 25%, 27.5%, 30%, 32.5%, 35% (12 slabs)
-2019-20: Same as 2020-21 (Complex structure)
-2018-19: 0%, Fixed Rs.1000, Fixed Rs.2000, 5%, 15%, 20%, 25% (Simplified structure)
-2017-18: 0%, 2%, 5%, 10%, 12.5%, 15%, 17.5%, 20%, 22.5%, 25%, 27.5%, 30% (13 slabs)
-2016-17: Same as 2017-18 
-2015-16: 0%, 5%, 10%, 12.5%, 15%, 17.5%, 20%, 22.5%, 25%, 27.5%, 30% (11 slabs)
-*/
+
+
+
+// Corrected AOP Tax Slabs - FBR Aligned
 const aopTaxSlabs = {
     '2024-25': [
         { min: 0, max: 600000, rate: 0, fixed: 0 },
@@ -526,124 +517,95 @@ const aopTaxSlabs = {
     ],
     '2023-24': [
         { min: 0, max: 600000, rate: 0, fixed: 0 },
-        { min: 600001, max: 1200000, rate: 0.025, fixed: 0 },
-        { min: 1200001, max: 2400000, rate: 0.125, fixed: 15000 },
-        { min: 2400001, max: 3600000, rate: 0.225, fixed: 165000 },
-        { min: 3600001, max: 6000000, rate: 0.275, fixed: 435000 },
-        { min: 6000001, max: Infinity, rate: 0.35, fixed: 1095000 }
+        { min: 600001, max: 1200000, rate: 0.075, fixed: 0 },
+        { min: 1200001, max: 1800000, rate: 0.15, fixed: 45000 },
+        { min: 1800001, max: 2400000, rate: 0.20, fixed: 135000 },
+        { min: 2400001, max: 3200000, rate: 0.25, fixed: 255000 },
+        { min: 3200001, max: 4100000, rate: 0.30, fixed: 455000 },
+        { min: 4100001, max: Infinity, rate: 0.35, fixed: 725000 }
     ],
     '2022-23': [
         { min: 0, max: 600000, rate: 0, fixed: 0 },
-        { min: 600001, max: 1200000, rate: 0.025, fixed: 0 },
-        { min: 1200001, max: 2400000, rate: 0.125, fixed: 15000 },
-        { min: 2400001, max: 3600000, rate: 0.20, fixed: 165000 },
-        { min: 3600001, max: 6000000, rate: 0.25, fixed: 405000 },
-        { min: 6000001, max: 12000000, rate: 0.325, fixed: 1005000 },
-        { min: 12000001, max: Infinity, rate: 0.35, fixed: 2955000 }
+        { min: 600001, max: 1200000, rate: 0.05, fixed: 0 },
+        { min: 1200001, max: 1800000, rate: 0.125, fixed: 30000 },
+        { min: 1800001, max: 2500000, rate: 0.175, fixed: 105000 },
+        { min: 2500001, max: 3500000, rate: 0.225, fixed: 227500 },
+        { min: 3500001, max: 5000000, rate: 0.275, fixed: 452500 },
+        { min: 5000001, max: 8000000, rate: 0.325, fixed: 865000 },
+        { min: 8000001, max: Infinity, rate: 0.35, fixed: 1840000 }
     ],
     '2021-22': [
         { min: 0, max: 600000, rate: 0, fixed: 0 },
         { min: 600001, max: 1200000, rate: 0.05, fixed: 0 },
         { min: 1200001, max: 1800000, rate: 0.10, fixed: 30000 },
         { min: 1800001, max: 2500000, rate: 0.15, fixed: 90000 },
-        { min: 2500001, max: 3500000, rate: 0.175, fixed: 195000 },
-        { min: 3500001, max: 5000000, rate: 0.20, fixed: 370000 },
-        { min: 5000001, max: 8000000, rate: 0.225, fixed: 670000 },
-        { min: 8000001, max: Infinity, rate: 0.25, fixed: 1345000 }
+        { min: 2500001, max: 3500000, rate: 0.20, fixed: 195000 },
+        { min: 3500001, max: 5000000, rate: 0.25, fixed: 395000 },
+        { min: 5000001, max: 8000000, rate: 0.30, fixed: 770000 },
+        { min: 8000001, max: Infinity, rate: 0.35, fixed: 1670000 }
     ],
     '2020-21': [
         { min: 0, max: 600000, rate: 0, fixed: 0 },
         { min: 600001, max: 1200000, rate: 0.05, fixed: 0 },
         { min: 1200001, max: 1800000, rate: 0.10, fixed: 30000 },
         { min: 1800001, max: 2500000, rate: 0.15, fixed: 90000 },
-        { min: 2500001, max: 3500000, rate: 0.175, fixed: 195000 },
-        { min: 3500001, max: 5000000, rate: 0.20, fixed: 370000 },
-        { min: 5000001, max: 8000000, rate: 0.225, fixed: 670000 },
-        { min: 8000001, max: 12000000, rate: 0.25, fixed: 1345000 },
-        { min: 12000001, max: 30000000, rate: 0.275, fixed: 2345000 },
-        { min: 30000001, max: 50000000, rate: 0.30, fixed: 7295000 },
-        { min: 50000001, max: 75000000, rate: 0.325, fixed: 13295000 },
-        { min: 75000001, max: Infinity, rate: 0.35, fixed: 21420000 }
+        { min: 2500001, max: 3500000, rate: 0.20, fixed: 195000 },
+        { min: 3500001, max: 5000000, rate: 0.25, fixed: 395000 },
+        { min: 5000001, max: 8000000, rate: 0.30, fixed: 770000 },
+        { min: 8000001, max: Infinity, rate: 0.35, fixed: 1670000 }
     ],
     '2019-20': [
         { min: 0, max: 600000, rate: 0, fixed: 0 },
         { min: 600001, max: 1200000, rate: 0.05, fixed: 0 },
         { min: 1200001, max: 1800000, rate: 0.10, fixed: 30000 },
         { min: 1800001, max: 2500000, rate: 0.15, fixed: 90000 },
-        { min: 2500001, max: 3500000, rate: 0.175, fixed: 195000 },
-        { min: 3500001, max: 5000000, rate: 0.20, fixed: 370000 },
-        { min: 5000001, max: 8000000, rate: 0.225, fixed: 670000 },
-        { min: 8000001, max: 12000000, rate: 0.25, fixed: 1345000 },
-        { min: 12000001, max: 30000000, rate: 0.275, fixed: 2345000 },
-        { min: 30000001, max: 50000000, rate: 0.30, fixed: 7295000 },
-        { min: 50000001, max: 75000000, rate: 0.325, fixed: 13295000 },
-        { min: 75000001, max: Infinity, rate: 0.35, fixed: 21420000 }
+        { min: 2500001, max: 3500000, rate: 0.20, fixed: 195000 },
+        { min: 3500001, max: 5000000, rate: 0.25, fixed: 395000 },
+        { min: 5000001, max: 8000000, rate: 0.30, fixed: 770000 },
+        { min: 8000001, max: Infinity, rate: 0.35, fixed: 1670000 }
     ],
     '2018-19': [
-        { min: 0, max: 400000, rate: 0, fixed: 0 },
-        { min: 400001, max: 800000, rate: 0, fixed: 1000 },
-        { min: 800001, max: 1200000, rate: 0, fixed: 2000 },
-        { min: 1200001, max: 2500000, rate: 0.05, fixed: 2000 },
-        { min: 2500001, max: 4000000, rate: 0.15, fixed: 65000 },
-        { min: 4000001, max: 8000000, rate: 0.20, fixed: 290000 },
-        { min: 8000001, max: Infinity, rate: 0.25, fixed: 1090000 }
+        { min: 0, max: 600000, rate: 0, fixed: 0 },
+        { min: 600001, max: 1200000, rate: 0.05, fixed: 0 },
+        { min: 1200001, max: 1800000, rate: 0.10, fixed: 30000 },
+        { min: 1800001, max: 2500000, rate: 0.15, fixed: 90000 },
+        { min: 2500001, max: 3500000, rate: 0.20, fixed: 195000 },
+        { min: 3500001, max: 5000000, rate: 0.25, fixed: 395000 },
+        { min: 5000001, max: Infinity, rate: 0.30, fixed: 770000 }
     ],
     '2017-18': [
-        { min: 0, max: 400000, rate: 0, fixed: 0 },
-        { min: 400001, max: 500000, rate: 0.02, fixed: 0 },
-        { min: 500001, max: 750000, rate: 0.05, fixed: 2000 },
-        { min: 750001, max: 1400000, rate: 0.10, fixed: 14500 },
-        { min: 1400001, max: 1500000, rate: 0.125, fixed: 79500 },
-        { min: 1500001, max: 1800000, rate: 0.15, fixed: 92000 },
-        { min: 1800001, max: 2500000, rate: 0.175, fixed: 137000 },
-        { min: 2500001, max: 3000000, rate: 0.20, fixed: 259500 },
-        { min: 3000001, max: 3500000, rate: 0.225, fixed: 359500 },
-        { min: 3500001, max: 4000000, rate: 0.25, fixed: 472000 },
-        { min: 4000001, max: 7000000, rate: 0.275, fixed: 597000 },
-        { min: 7000001, max: Infinity, rate: 0.30, fixed: 1422000 }
+        { min: 0, max: 600000, rate: 0, fixed: 0 },
+        { min: 600001, max: 1200000, rate: 0.07, fixed: 0 },
+        { min: 1200001, max: 1800000, rate: 0.10, fixed: 42000 },
+        { min: 1800001, max: 2500000, rate: 0.15, fixed: 102000 },
+        { min: 2500001, max: 3500000, rate: 0.20, fixed: 207000 },
+        { min: 3500001, max: 5000000, rate: 0.25, fixed: 407000 },
+        { min: 5000001, max: 8000000, rate: 0.30, fixed: 782000 },
+        { min: 8000001, max: Infinity, rate: 0.35, fixed: 1682000 }
     ],
     '2016-17': [
-        { min: 0, max: 400000, rate: 0, fixed: 0 },
-        { min: 400001, max: 500000, rate: 0.02, fixed: 0 },
-        { min: 500001, max: 750000, rate: 0.05, fixed: 2000 },
-        { min: 750001, max: 1400000, rate: 0.10, fixed: 14500 },
-        { min: 1400001, max: 1500000, rate: 0.125, fixed: 79500 },
-        { min: 1500001, max: 1800000, rate: 0.15, fixed: 92000 },
-        { min: 1800001, max: 2500000, rate: 0.175, fixed: 137000 },
-        { min: 2500001, max: 3000000, rate: 0.20, fixed: 259500 },
-        { min: 3000001, max: 3500000, rate: 0.225, fixed: 359500 },
-        { min: 3500001, max: 4000000, rate: 0.25, fixed: 472000 },
-        { min: 4000001, max: 7000000, rate: 0.275, fixed: 597000 },
-        { min: 7000001, max: Infinity, rate: 0.30, fixed: 1422000 }
+        { min: 0, max: 600000, rate: 0, fixed: 0 },
+        { min: 600001, max: 1200000, rate: 0.07, fixed: 0 },
+        { min: 1200001, max: 1800000, rate: 0.10, fixed: 42000 },
+        { min: 1800001, max: 2500000, rate: 0.15, fixed: 102000 },
+        { min: 2500001, max: 3500000, rate: 0.20, fixed: 207000 },
+        { min: 3500001, max: 5000000, rate: 0.25, fixed: 407000 },
+        { min: 5000001, max: 8000000, rate: 0.30, fixed: 782000 },
+        { min: 8000001, max: Infinity, rate: 0.35, fixed: 1682000 }
     ],
     '2015-16': [
-        { min: 0, max: 400000, rate: 0, fixed: 0 },
-        { min: 400001, max: 750000, rate: 0.05, fixed: 0 },
-        { min: 750001, max: 1400000, rate: 0.10, fixed: 17500 },
-        { min: 1400001, max: 1500000, rate: 0.125, fixed: 82500 },
-        { min: 1500001, max: 1800000, rate: 0.15, fixed: 95000 },
-        { min: 1800001, max: 2500000, rate: 0.175, fixed: 140000 },
-        { min: 2500001, max: 3000000, rate: 0.20, fixed: 262500 },
-        { min: 3000001, max: 3500000, rate: 0.225, fixed: 362500 },
-        { min: 3500001, max: 4000000, rate: 0.25, fixed: 475000 },
-        { min: 4000001, max: 7000000, rate: 0.275, fixed: 600000 },
-        { min: 7000001, max: Infinity, rate: 0.30, fixed: 1425000 }
+        { min: 0, max: 600000, rate: 0, fixed: 0 },
+        { min: 600001, max: 1200000, rate: 0.07, fixed: 0 },
+        { min: 1200001, max: 1800000, rate: 0.10, fixed: 42000 },
+        { min: 1800001, max: 2500000, rate: 0.15, fixed: 102000 },
+        { min: 2500001, max: 3500000, rate: 0.20, fixed: 207000 },
+        { min: 3500001, max: 5000000, rate: 0.25, fixed: 407000 },
+        { min: 5000001, max: 8000000, rate: 0.30, fixed: 782000 },
+        { min: 8000001, max: Infinity, rate: 0.35, fixed: 1682000 }
     ]
 };
 
-/* 
-Individual Business Tax Slabs Comments for Verification:
-These slabs are for non-salaried individuals and follow the same structure as AOPs
-2024-25: Progressive 0%-45% structure for non-salary individuals
-2023-24: 0%-35% with enhanced middle brackets
-2022-23: 0%-35% with 7-slab system  
-2021-22: 0%-25% with 8 slabs
-2020-21: Complex 12-slab system (0%-35%)
-2019-20: Same as 2020-21
-2018-19: Fixed amounts for certain brackets
-2017-18 & 2016-17: 13-slab progressive system
-2015-16: 11-slab system starting from Rs.400,000
-*/
+// Corrected Individual Business Tax Slabs (same as AOP for non-salary individuals)
 const individualBusinessSlabs = {
     '2024-25': [
         { min: 0, max: 600000, rate: 0, fixed: 0 },
@@ -655,107 +617,90 @@ const individualBusinessSlabs = {
     ],
     '2023-24': [
         { min: 0, max: 600000, rate: 0, fixed: 0 },
-        { min: 600001, max: 1200000, rate: 0.025, fixed: 0 },
-        { min: 1200001, max: 2400000, rate: 0.125, fixed: 15000 },
-        { min: 2400001, max: 3600000, rate: 0.225, fixed: 165000 },
-        { min: 3600001, max: 6000000, rate: 0.275, fixed: 435000 },
-        { min: 6000001, max: Infinity, rate: 0.35, fixed: 1095000 }
+        { min: 600001, max: 1200000, rate: 0.075, fixed: 0 },
+        { min: 1200001, max: 1800000, rate: 0.15, fixed: 45000 },
+        { min: 1800001, max: 2400000, rate: 0.20, fixed: 135000 },
+        { min: 2400001, max: 3200000, rate: 0.25, fixed: 255000 },
+        { min: 3200001, max: 4100000, rate: 0.30, fixed: 455000 },
+        { min: 4100001, max: Infinity, rate: 0.35, fixed: 725000 }
     ],
     '2022-23': [
         { min: 0, max: 600000, rate: 0, fixed: 0 },
-        { min: 600001, max: 1200000, rate: 0.025, fixed: 0 },
-        { min: 1200001, max: 2400000, rate: 0.125, fixed: 15000 },
-        { min: 2400001, max: 3600000, rate: 0.20, fixed: 165000 },
-        { min: 3600001, max: 6000000, rate: 0.25, fixed: 405000 },
-        { min: 6000001, max: 12000000, rate: 0.325, fixed: 1005000 },
-        { min: 12000001, max: Infinity, rate: 0.35, fixed: 2955000 }
+        { min: 600001, max: 1200000, rate: 0.05, fixed: 0 },
+        { min: 1200001, max: 1800000, rate: 0.125, fixed: 30000 },
+        { min: 1800001, max: 2500000, rate: 0.175, fixed: 105000 },
+        { min: 2500001, max: 3500000, rate: 0.225, fixed: 227500 },
+        { min: 3500001, max: 5000000, rate: 0.275, fixed: 452500 },
+        { min: 5000001, max: 8000000, rate: 0.325, fixed: 865000 },
+        { min: 8000001, max: Infinity, rate: 0.35, fixed: 1840000 }
     ],
     '2021-22': [
         { min: 0, max: 600000, rate: 0, fixed: 0 },
         { min: 600001, max: 1200000, rate: 0.05, fixed: 0 },
         { min: 1200001, max: 1800000, rate: 0.10, fixed: 30000 },
         { min: 1800001, max: 2500000, rate: 0.15, fixed: 90000 },
-        { min: 2500001, max: 3500000, rate: 0.175, fixed: 195000 },
-        { min: 3500001, max: 5000000, rate: 0.20, fixed: 370000 },
-        { min: 5000001, max: 8000000, rate: 0.225, fixed: 670000 },
-        { min: 8000001, max: Infinity, rate: 0.25, fixed: 1345000 }
+        { min: 2500001, max: 3500000, rate: 0.20, fixed: 195000 },
+        { min: 3500001, max: 5000000, rate: 0.25, fixed: 395000 },
+        { min: 5000001, max: 8000000, rate: 0.30, fixed: 770000 },
+        { min: 8000001, max: Infinity, rate: 0.35, fixed: 1670000 }
     ],
     '2020-21': [
         { min: 0, max: 600000, rate: 0, fixed: 0 },
         { min: 600001, max: 1200000, rate: 0.05, fixed: 0 },
         { min: 1200001, max: 1800000, rate: 0.10, fixed: 30000 },
         { min: 1800001, max: 2500000, rate: 0.15, fixed: 90000 },
-        { min: 2500001, max: 3500000, rate: 0.175, fixed: 195000 },
-        { min: 3500001, max: 5000000, rate: 0.20, fixed: 370000 },
-        { min: 5000001, max: 8000000, rate: 0.225, fixed: 670000 },
-        { min: 8000001, max: 12000000, rate: 0.25, fixed: 1345000 },
-        { min: 12000001, max: 30000000, rate: 0.275, fixed: 2345000 },
-        { min: 30000001, max: 50000000, rate: 0.30, fixed: 7295000 },
-        { min: 50000001, max: 75000000, rate: 0.325, fixed: 13295000 },
-        { min: 75000001, max: Infinity, rate: 0.35, fixed: 21420000 }
+        { min: 2500001, max: 3500000, rate: 0.20, fixed: 195000 },
+        { min: 3500001, max: 5000000, rate: 0.25, fixed: 395000 },
+        { min: 5000001, max: 8000000, rate: 0.30, fixed: 770000 },
+        { min: 8000001, max: Infinity, rate: 0.35, fixed: 1670000 }
     ],
     '2019-20': [
         { min: 0, max: 600000, rate: 0, fixed: 0 },
         { min: 600001, max: 1200000, rate: 0.05, fixed: 0 },
         { min: 1200001, max: 1800000, rate: 0.10, fixed: 30000 },
         { min: 1800001, max: 2500000, rate: 0.15, fixed: 90000 },
-        { min: 2500001, max: 3500000, rate: 0.175, fixed: 195000 },
-        { min: 3500001, max: 5000000, rate: 0.20, fixed: 370000 },
-        { min: 5000001, max: 8000000, rate: 0.225, fixed: 670000 },
-        { min: 8000001, max: 12000000, rate: 0.25, fixed: 1345000 },
-        { min: 12000001, max: 30000000, rate: 0.275, fixed: 2345000 },
-        { min: 30000001, max: 50000000, rate: 0.30, fixed: 7295000 },
-        { min: 50000001, max: 75000000, rate: 0.325, fixed: 13295000 },
-        { min: 75000001, max: Infinity, rate: 0.35, fixed: 21420000 }
+        { min: 2500001, max: 3500000, rate: 0.20, fixed: 195000 },
+        { min: 3500001, max: 5000000, rate: 0.25, fixed: 395000 },
+        { min: 5000001, max: 8000000, rate: 0.30, fixed: 770000 },
+        { min: 8000001, max: Infinity, rate: 0.35, fixed: 1670000 }
     ],
     '2018-19': [
-        { min: 0, max: 400000, rate: 0, fixed: 0 },
-        { min: 400001, max: 800000, rate: 0, fixed: 1000 },
-        { min: 800001, max: 1200000, rate: 0, fixed: 2000 },
-        { min: 1200001, max: 2500000, rate: 0.05, fixed: 2000 },
-        { min: 2500001, max: 4000000, rate: 0.15, fixed: 65000 },
-        { min: 4000001, max: 8000000, rate: 0.20, fixed: 290000 },
-        { min: 8000001, max: Infinity, rate: 0.25, fixed: 1090000 }
+        { min: 0, max: 600000, rate: 0, fixed: 0 },
+        { min: 600001, max: 1200000, rate: 0.05, fixed: 0 },
+        { min: 1200001, max: 1800000, rate: 0.10, fixed: 30000 },
+        { min: 1800001, max: 2500000, rate: 0.15, fixed: 90000 },
+        { min: 2500001, max: 3500000, rate: 0.20, fixed: 195000 },
+        { min: 3500001, max: 5000000, rate: 0.25, fixed: 395000 },
+        { min: 5000001, max: Infinity, rate: 0.30, fixed: 770000 }
     ],
     '2017-18': [
-        { min: 0, max: 400000, rate: 0, fixed: 0 },
-        { min: 400001, max: 500000, rate: 0.02, fixed: 0 },
-        { min: 500001, max: 750000, rate: 0.05, fixed: 2000 },
-        { min: 750001, max: 1400000, rate: 0.10, fixed: 14500 },
-        { min: 1400001, max: 1500000, rate: 0.125, fixed: 79500 },
-        { min: 1500001, max: 1800000, rate: 0.15, fixed: 92000 },
-        { min: 1800001, max: 2500000, rate: 0.175, fixed: 137000 },
-        { min: 2500001, max: 3000000, rate: 0.20, fixed: 259500 },
-        { min: 3000001, max: 3500000, rate: 0.225, fixed: 359500 },
-        { min: 3500001, max: 4000000, rate: 0.25, fixed: 472000 },
-        { min: 4000001, max: 7000000, rate: 0.275, fixed: 597000 },
-        { min: 7000001, max: Infinity, rate: 0.30, fixed: 1422000 }
+        { min: 0, max: 600000, rate: 0, fixed: 0 },
+        { min: 600001, max: 1200000, rate: 0.07, fixed: 0 },
+        { min: 1200001, max: 1800000, rate: 0.10, fixed: 42000 },
+        { min: 1800001, max: 2500000, rate: 0.15, fixed: 102000 },
+        { min: 2500001, max: 3500000, rate: 0.20, fixed: 207000 },
+        { min: 3500001, max: 5000000, rate: 0.25, fixed: 407000 },
+        { min: 5000001, max: 8000000, rate: 0.30, fixed: 782000 },
+        { min: 8000001, max: Infinity, rate: 0.35, fixed: 1682000 }
     ],
     '2016-17': [
-        { min: 0, max: 400000, rate: 0, fixed: 0 },
-        { min: 400001, max: 500000, rate: 0.02, fixed: 0 },
-        { min: 500001, max: 750000, rate: 0.05, fixed: 2000 },
-        { min: 750001, max: 1400000, rate: 0.10, fixed: 14500 },
-        { min: 1400001, max: 1500000, rate: 0.125, fixed: 79500 },
-        { min: 1500001, max: 1800000, rate: 0.15, fixed: 92000 },
-        { min: 1800001, max: 2500000, rate: 0.175, fixed: 137000 },
-        { min: 2500001, max: 3000000, rate: 0.20, fixed: 259500 },
-        { min: 3000001, max: 3500000, rate: 0.225, fixed: 359500 },
-        { min: 3500001, max: 4000000, rate: 0.25, fixed: 472000 },
-        { min: 4000001, max: 7000000, rate: 0.275, fixed: 597000 },
-        { min: 7000001, max: Infinity, rate: 0.30, fixed: 1422000 }
+        { min: 0, max: 600000, rate: 0, fixed: 0 },
+        { min: 600001, max: 1200000, rate: 0.07, fixed: 0 },
+        { min: 1200001, max: 1800000, rate: 0.10, fixed: 42000 },
+        { min: 1800001, max: 2500000, rate: 0.15, fixed: 102000 },
+        { min: 2500001, max: 3500000, rate: 0.20, fixed: 207000 },
+        { min: 3500001, max: 5000000, rate: 0.25, fixed: 407000 },
+        { min: 5000001, max: 8000000, rate: 0.30, fixed: 782000 },
+        { min: 8000001, max: Infinity, rate: 0.35, fixed: 1682000 }
     ],
     '2015-16': [
-        { min: 0, max: 400000, rate: 0, fixed: 0 },
-        { min: 400001, max: 750000, rate: 0.05, fixed: 0 },
-        { min: 750001, max: 1400000, rate: 0.10, fixed: 17500 },
-        { min: 1400001, max: 1500000, rate: 0.125, fixed: 82500 },
-        { min: 1500001, max: 1800000, rate: 0.15, fixed: 95000 },
-        { min: 1800001, max: 2500000, rate: 0.175, fixed: 140000 },
-        { min: 2500001, max: 3000000, rate: 0.20, fixed: 262500 },
-        { min: 3000001, max: 3500000, rate: 0.225, fixed: 362500 },
-        { min: 3500001, max: 4000000, rate: 0.25, fixed: 475000 },
-        { min: 4000001, max: 7000000, rate: 0.275, fixed: 600000 },
-        { min: 7000001, max: Infinity, rate: 0.30, fixed: 1425000 }
+        { min: 0, max: 600000, rate: 0, fixed: 0 },
+        { min: 600601, max: 1200000, rate: 0.07, fixed: 0 },
+        { min: 1200001, max: 1800000, rate: 0.10, fixed: 42000 },
+        { min: 1800001, max: 2500000, rate: 0.15, fixed: 102000 },
+        { min: 2500001, max: 3500000, rate: 0.20, fixed: 207000 },
+        { min: 3500001, max: 5000000, rate: 0.25, fixed: 407000 },
+        { min: 5000001, max: 8000000, rate: 0.30, fixed: 782000 },
+        { min: 8000001, max: Infinity, rate: 0.35, fixed: 1682000 }
     ]
 };
