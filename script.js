@@ -336,7 +336,7 @@ function showTaxSlabs() {
 async function loadLatestTaxNews() {
     try {
         // Using your working API
-        const response = await fetch(`http://api.mediastack.com/v1/news?access_key=f5932685d787583245850202af44758d&keywords=Pakistan%20tax&languages=en&limit=10`);
+        const response = await fetch(`https://api.mediastack.com/v1/news?access_key=f5932685d787583245850202af44758d&keywords=Pakistan%20tax&languages=en&limit=10`);
 
         if (!response.ok) {
             throw new Error('API request failed');
